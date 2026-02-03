@@ -12,10 +12,11 @@ public class TestScoreApp {
         int scoreTotal = 0;
         int scoreCount = 0;
         int testScore = 0;
+        double averageScore = 0.0;
         Scanner sc = new Scanner(System.in);
 
         // get a series of test scores from the user
-        while (testScore <= 100) {
+        while (testScore != 999) {
             // get the input from the user
             System.out.print("Enter score: ");
             String input = sc.nextLine();
@@ -25,11 +26,20 @@ public class TestScoreApp {
             if (testScore <= 100) {
                 scoreCount = scoreCount + 1;
                 scoreTotal = scoreTotal + testScore;
+            } 
+            else if (testScore > 100 && testScore != 999){
+                System.out.println("Invalid entry; not counted");
             }
+            
         }
 
         // display the score count, score total, and average score
-        double averageScore = (double) scoreTotal / scoreCount;
+        if (scoreCount > 0) {
+            averageScore = (double) scoreTotal / scoreCount;
+        } else {
+            averageScore = 0.0;
+        }
+        
         String message = "\n"
                 + "Score count:   " + scoreCount + "\n"
                 + "Score total:   " + scoreTotal + "\n"
